@@ -1,0 +1,49 @@
+/**
+ * ----------
+ * SCRIPTS
+ * ----------
+*/
+
+1. npm run scrape
+-   collects data from a variety of sources and manipulates into json as per
+    data types below
+-   run `sudo npm run scrape` to ensure permissions for creating/removing directories
+
+@todo   -   check if householdsData dir already exists and delete it if it does
+            before downloading .csv files from ONS
+
+
+/**
+ * ----------
+ * DATA TYPES
+ * ----------
+*/
+
+POSTCODE
+x postcode                          [string]                                        // constituency data
+x constituency                      [ObjectID]                                      // __ref
+x coords                            [{ lat: Number, lon: Number }]                  // constituency data
+x altitude                          [number (metres)]                               // constituency data
+x county                            [string]                                        // constituency data
+x region                            [string]                                        // constituency data
+x country                           [string]                                        // constituency data
+- population                        [{ m: Number, f: Number }]                      // census data
+- local authority district          [string]                                        // constituency data
+- lower layer super output area     [string]                                        // constituency data
+- index of multiple deprivation     [number]                                        // constituency data
+
+CONSTITUENCY
+x name                              [string]                                        // constituency data
+- postcodes                         [Array<ObjectID>]                               // __ref
+- MP                                [ObjectID]                                      // __ref
+? mp_history                        [Array<ObjectID>]                               // __ref
+
+MP
+x firstname                         [string]                                        // mpData
+x surname                           [string]                                        // mpData
+x party                             [string]                                        // mpData
+x position                          [string] | optional                             // mpData
+x constituency                      [ObjectID]                                      // __ref
+x links                             [Array<{ title: String, url: String }>]         // mpData
+
+@todo   -   research public whip data
